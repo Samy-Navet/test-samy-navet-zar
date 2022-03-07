@@ -87,6 +87,8 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
 
     const champion = useMemo(() => hasChampion ? getChampionName(championId) : noData, [championId, hasChampion]);
     const championImage = useMemo(() => getChampionImage(hasChampion ? championId : 0), [championId, hasChampion]);
+    const roleName = useMemo(() => hasRole ? getRoleName(role) : null, [role, hasRole]);
+    const tierDivisionName = useMemo(() => gamesPlayed > 0 ? getTierDivisionName(tier, division) : null, [gamesPlayed, tier, division])
 
     return (
         <Card elevation='1' style={{ borderRadius: '2px', margin: '8px auto', height: '80px', padding: '5px' }} p={1}>
@@ -105,7 +107,7 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
                                 {`${winrate.toFixed(1)}% wr`}
                             </Typography>
                             <Typography color='textSecondary' variant="textSmall" mt={1} mb={1}>
-                                {`${capitalize(tier)} ${division}`}
+                                {tierDivisionName}
                             </Typography>
                             <Typography color='textTertiary' variant="textExtraSmall" mt={1} mb={1}>
                                 {`${gamesPlayed} games`}
@@ -116,7 +118,7 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
                 {hasRole && !hasChampion ? (
                     <div className={classes.column}>
                         <Typography color='textSecondary' mt={0.5} mb={1}>
-                            {`as ${capitalize(role)}`}
+                            {`as ${roleName}`}
                         </Typography>
                         {gamesPlayed ? <DetailsList winrate={roleProfile.winrate} kda={roleProfile.kda} gamesPlayed={roleProfile.gamesPlayed} /> : NoData}
                     </ div>
@@ -154,5 +156,3 @@ const NoData = (
         no data
     </Typography>
 )
-
-const capitalize = (s: string): string => s && s[0].toUpperCase() + s.slice(1).toLowerCase();
