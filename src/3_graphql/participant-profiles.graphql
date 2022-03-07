@@ -1,0 +1,34 @@
+input GetParticipantProfilesInput  {
+    platformId: String!
+    queueId: String!
+    participants: [ParticipantInput]!
+}
+
+input ParticipantInput {
+    summonerName: String!
+    role: String
+    championId: Int
+}
+
+type Rank {
+    tier: String!
+    division: String!
+}
+
+type Profile {
+    kda: Float
+    gamesPlayed: Int!
+    winrate: Float!
+    rank: Rank
+}
+
+type ParticipantProfile {
+    summonerName: String!
+    queueProfile: Profile
+    championProfile: Profile
+    roleProfile: Profile
+}
+
+type Query {
+    getParticipantProfiles(input: GetParticipantProfilesInput!): [ParticipantProfile]!
+}

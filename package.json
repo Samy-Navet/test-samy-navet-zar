@@ -1,0 +1,32 @@
+{
+  "name": "junior-react-takehome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "start-storybook -p 6006",
+    "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.5.9",
+    "@material-ui/core": "4.11.4",
+    "classnames": "^2.3.1",
+    "graphql": "^16.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.9",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "babel-loader": "^8.2.3",
+    "storybook-addon-apollo-client": "^4.0.11",
+    "typescript": "^4.5.5"
+  }
+}
