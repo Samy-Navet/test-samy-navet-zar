@@ -21,7 +21,8 @@ export const ResourceProvider: React.FC = ({
     const getChampionImage = useCallback((championId: Client.ChampionId) => {
         // TODO: This function should return the champion image url based on the passed championId
         // e.g. for Annie it's the following: https://cdn.zargg.workers.dev/champion/1.png
-        throw new Error('Not implemented.');
+        if (!championId) throw new Error('missing championID');
+        return `https://cdn.zargg.workers.dev/champion/${championId}.png`
     }, []);
 
     const context = useMemo<ResourceContext>(() => ({
