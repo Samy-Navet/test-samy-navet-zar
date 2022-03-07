@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
         height: '70px',
         alignSelf: 'center',
         marginRight: '10px'
-        //flexGrow: 1
     }
 }));
 
