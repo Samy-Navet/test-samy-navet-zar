@@ -1,5 +1,5 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useResource } from '../../1_hooks/resource.provider';
 import { Card, Typography } from '../../common/core/components';
 import { Client, isChampionIdValid, isRoleValid } from '../../common/league';
@@ -85,8 +85,8 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
     const hasRole = isRoleValid(role);
     const hasChampion = isChampionIdValid(championId);
 
-    const champion = hasChampion ? getChampionName(championId) : noData;
-    const championImage = getChampionImage(hasChampion ? championId : 0);
+    const champion = useMemo(() => hasChampion ? getChampionName(championId) : noData, [championId, hasChampion]);
+    const championImage = useMemo(() => getChampionImage(hasChampion ? championId : 0), [championId, hasChampion]);
 
     return (
         <Card elevation='1' style={{ borderRadius: '2px', margin: '8px auto', height: '80px', padding: '5px' }} p={1}>
