@@ -46,8 +46,25 @@ export const ParticipantProfiles: React.FC<ParticipantProfilesProps> = ({
     return (
         <DraftSummonerProfiles profiles={participants.map(participant => {
             // TODO: Match the participant with one of the profiles from the response
+            if (!loading && !error) {
+                const profile = data?.getParticipantProfiles?.find(participantProfile => participantProfile.summonerName === participant.summonerName && participantProfile.queueProfile);
+                if (profile) return {
+                    summonerName: participant.summonerName,
+                    winrate: profile?.queueProfile?.winrate,
+                    gamesPlayed: profile?.queueProfile?.gamesPlayed,
+                    tier: profile?.queueProfile?.rank?.tier,
+                    division: profile?.queueProfile?.rank?.division,
+                    role: participant?.role,
+                    roleProfile: profile?.roleProfile,
+                    championId: participant?.championId,
+                    championProfile: profile?.championProfile
+                }
+
+            }
             return {
-                summonerName: participant.summonerName
+                summonerName: participant.summonerName,
+                role: participant?.role,
+                championId: participant?.championId,
             };
         })} />
     );
