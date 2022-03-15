@@ -24,7 +24,7 @@ export const DraftSummonerProfiles: React.FC<DraftSummonerProfilesProps> = ({
 
     return (
         <Card elevation='0' p={1}>
-            {profiles.map(profile => <DraftSummonerProfile profile={profile} />)}
+            {profiles.map(profile => <DraftSummonerProfile key={profile.summonerName} profile={profile} />)}
         </Card>
     );
 }

@@ -8,7 +8,10 @@ export interface ParticipantProfilesQueryData {
 export const PARTICIPANT_PROFILES_QUERY = gql`
     query GetParticipantProfiles($input: GetParticipantProfilesInput) {        
         getParticipantProfiles(input: $input) {
-            summonerName            
+            summonerName,
+            queueProfile,
+            championProfile,
+            roleProfile
         }
     }
 `;
